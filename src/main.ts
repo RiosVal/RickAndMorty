@@ -6,6 +6,14 @@ import { provideHttpClient } from '@angular/common/http';
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 
+import { addIcons } from 'ionicons';
+import { heart, heartOutline } from 'ionicons/icons';
+
+addIcons({
+  'heart-outline': heartOutline,
+  'heart': heart,
+});
+
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

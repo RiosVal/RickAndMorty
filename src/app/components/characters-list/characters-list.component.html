@@ -4,10 +4,19 @@
       <ion-avatar slot="start">
         <img [src]="char.image" />
       </ion-avatar>
+      
       <ion-label>
         <h2>{{ char.name }}</h2>
         <p>{{ char.species }} - {{ char.status }}</p>
       </ion-label>
+
+      <ion-button fill="clear" slot="end" (click)="toggleFavorite(char)">
+        <ion-icon
+          [name]="isFavorite(char) ? 'heart' : 'heart-outline'"
+          slot="icon-only"
+          color="danger">
+        </ion-icon>
+      </ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

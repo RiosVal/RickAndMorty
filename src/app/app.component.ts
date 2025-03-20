@@ -6,7 +6,7 @@ import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
   templateUrl: 'app.component.html',
   imports: [
     IonApp,
-    IonRouterOutlet,
+    IonRouterOutlet
   ],
 })
 export class AppComponent {
