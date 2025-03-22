@@ -1,9 +1,7 @@
-<div class="delete-favorites-button">
-  <ion-button color="danger" (click)="clearAllFavorites()">
-    Eliminar todos
-    <div><ion-icon slot="icon-only" name="trash-outline"></ion-icon></div>
-  </ion-button>
-</div>
+<ion-button expand="block" color="danger" (click)="clearAllFavorites()">
+  Eliminar todos
+  <div><ion-icon slot="icon-only" name="trash-outline"></ion-icon></div>
+</ion-button>
 
 <ion-content>
   <ion-list *ngIf="favorites.length > 0; else noFavs">
