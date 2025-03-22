@@ -1,11 +1,11 @@
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let char of characters" [routerLink]="['/tabs/character', char.id]">
-      <ion-avatar slot="start">
+    <ion-item *ngFor="let char of characters">
+      <ion-avatar slot="start" [routerLink]="['/tabs/character', char.id]">
         <img [src]="char.image" />
       </ion-avatar>
 
-      <ion-label>
+      <ion-label [routerLink]="['/tabs/character', char.id]">
         <h2>{{ char.name }}</h2>
         <p>{{ char.species }} - {{ char.status }}</p>
       </ion-label>

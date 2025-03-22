@@ -1,0 +1,32 @@
+<div class="delete-favorites-button">
+  <ion-button color="danger" (click)="clearAllFavorites()">
+    Eliminar todos
+    <div><ion-icon slot="icon-only" name="trash-outline"></ion-icon></div>
+  </ion-button>
+</div>
+
+<ion-content>
+  <ion-list *ngIf="favorites.length > 0; else noFavs">
+    <ion-item *ngFor="let char of favorites">
+      <ion-avatar slot="start">
+        <img [src]="char.image" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ char.name }}</h2>
+        <p>{{ char.species }} - {{ char.status }}</p>
+      </ion-label>
+
+      <ion-button fill="clear" slot="end" (click)="toggleFavorite(char)">
+        <ion-icon
+          [name]="isFavorite(char) ? 'heart' : 'heart-outline'"
+          slot="icon-only"
+          color="danger">
+        </ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noFavs>
+    <ion-text class="ion-padding">No hay favoritos aún.</ion-text>
+  </ng-template>
+</ion-content>

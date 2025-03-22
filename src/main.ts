@@ -7,12 +7,18 @@ import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 
 import { addIcons } from 'ionicons';
-import { heart, heartOutline, arrowBackOutline } from 'ionicons/icons';
+import {
+  heart,
+  heartOutline,
+  arrowBackOutline,
+  trashOutline
+} from 'ionicons/icons';
 
 addIcons({
   'heart-outline': heartOutline,
   'heart': heart,
   'arrow-back-outline': arrowBackOutline,
+  'trash-outline': trashOutline
 });
 
 bootstrapApplication(AppComponent, {
