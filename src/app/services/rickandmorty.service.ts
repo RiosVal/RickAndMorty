@@ -15,4 +15,9 @@ export class RickandmortyService {
   getCharacters(page: number = 1): Observable<any> {
     return this.http.get(`${this.apiUrl}/character?page=${page}`);
   }
+
+  getCharacterById(id: number): Observable<any> {
+    return this.http.get<any>(`https://rickandmortyapi.com/api/character/${id}`);
+  }
+  
 }

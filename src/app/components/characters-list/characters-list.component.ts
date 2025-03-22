@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RickandmortyService } from 'src/app/services/rickandmorty.service';
 import { FavoritesService } from 'src/app/services/favorites.service';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 
@@ -8,7 +9,7 @@ import { IonicModule } from '@ionic/angular';
   selector: 'app-characters-list',
   templateUrl: './characters-list.component.html',
   styleUrls: ['./characters-list.component.scss'],
-  imports: [CommonModule, IonicModule],
+  imports: [CommonModule, IonicModule, RouterModule],
 })
 export class CharactersListComponent  implements OnInit {
   characters: any[] = [];

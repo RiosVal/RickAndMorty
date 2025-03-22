@@ -26,6 +26,11 @@ export const routes: Routes = [
         redirectTo: '/tabs/tab1',
         pathMatch: 'full',
       },
+      {
+        path: 'character/:id',
+        loadComponent: () => import('../components/character-detail/character-detail.component')
+          .then(m => m.CharacterDetailComponent)
+      }      
     ],
   },
   {
