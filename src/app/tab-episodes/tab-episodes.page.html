@@ -5,9 +5,37 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content>
+  <ion-accordion-group>
+    <ion-accordion *ngFor="let episode of episodes" [value]="'ep' + episode.id">
+      <ion-item slot="header">
+        <ion-avatar slot="start">
+          <img [src]="episode.image" alt="Rick and Morty">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ episode.name }}</h2>
+          <p>{{ episode.episode }} - {{ episode.air_date }}</p>
+        </ion-label>
+      </ion-item>
+
+      <div slot="content">
+        <ion-list>
+          <ion-item *ngFor="let character of episode.characters">
+            <ng-container>
+              <ion-thumbnail slot="start">
+                <img [src]="character.image" alt="Character">
+              </ion-thumbnail>
+              <ion-label>{{character.name}}</ion-label>
+            </ng-container>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+</ion-content>
 
 
-<ion-content [fullscreen]="true">
+<!-- <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Episodios</ion-title>
@@ -42,67 +70,4 @@
     </ion-card-content>
   </ion-card>
 
-</ion-content>
-
-<!-- <ion-content [fullscreen]="true">
-
-  <div *ngIf="loading" class="loading-container">
-    <ion-spinner name="crescent"></ion-spinner>
-    <p>Cargando episodios...</p>
-  </div>
-
-
-  <div *ngIf="error" class="error-container">
-    <p>Error al cargar los episodios</p>
-    <ion-button (click)="loadEpisodes()">Reintentar</ion-button>
-  </div>
-
-
-  <ion-accordion-group *ngIf="!loading && !error">
-    <ion-accordion *ngFor="let episode of episodes" 
-                  [value]="episode.id"
-                  (ionChange)="episode.isOpen && loadEpisodeCharacters(episode)">
-      <ion-item slot="header">
-        <ion-thumbnail slot="start">
-          <img *ngIf="episode.image_url" [src]="episode.image_url" [alt]="episode.name">
-          <div *ngIf="!episode.image_url" class="no-image">Sin imagen</div>
-        </ion-thumbnail>
-        <ion-label>
-          <h3>{{ episode.episode }}</h3>
-          <h2>{{ episode.name }}</h2>
-          <p>{{ episode.air_date }}</p>
-        </ion-label>
-      </ion-item>
-
-      <div slot="content">
-
-        <div *ngIf="episode.charactersLoading" class="loading-characters">
-          <ion-spinner name="crescent"></ion-spinner>
-          <p>Cargando personajes...</p>
-        </div>
-
-
-        <div *ngIf="episode.charactersError" class="error-characters">
-          <p>Error al cargar personajes</p>
-        </div>
-
-
-        <ion-list *ngIf="episode.characters.length > 0">
-          <ion-item *ngFor="let character of episode.characters">
-            <ion-thumbnail slot="start">
-              <img [src]="character.image" [alt]="character.name">
-            </ion-thumbnail>
-            <ion-label>
-              <h2>{{ character.name }}</h2>
-              <p>{{ character.species }} - {{ character.status }}</p>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-
-        <div *ngIf="!episode.charactersLoading && episode.characters.length === 0" class="no-characters">
-          <p>No hay personajes registrados</p>
-        </div>
-      </div>
-    </ion-accordion>
-  </ion-accordion-group>
 </ion-content> -->

@@ -13,7 +13,7 @@ import {
   IonSpinner,
   IonAccordionGroup,
   IonAccordion,
-IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent } from '@ionic/angular/standalone';
+  IonAvatar} from '@ionic/angular/standalone';
 import { RickandmortyService } from '../services/rickandmorty.service';
 import { JSON_EPISODES } from 'src/assets/imageEpisodes';
 
@@ -26,8 +26,7 @@ import { JSON_EPISODES } from 'src/assets/imageEpisodes';
     IonContent, IonHeader, IonTitle, IonToolbar,
     IonAccordionGroup, IonAccordion, IonItem,
     IonLabel, IonThumbnail, IonSpinner, IonList,
-    CommonModule, FormsModule,
-    IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent
+    CommonModule, FormsModule, IonAvatar,
   ]
 })
 export class TabEpisodesPage implements OnInit {
