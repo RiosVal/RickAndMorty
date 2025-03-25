@@ -12,8 +12,10 @@ import {
   IonThumbnail,
   IonSpinner,
   IonAccordionGroup,
-  IonAccordion } from '@ionic/angular/standalone';
+  IonAccordion,
+IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent } from '@ionic/angular/standalone';
 import { RickandmortyService } from '../services/rickandmorty.service';
+import { JSON_EPISODES } from 'src/assets/imageEpisodes';
 
 @Component({
   selector: 'app-tab-episodes',
@@ -24,7 +26,8 @@ import { RickandmortyService } from '../services/rickandmorty.service';
     IonContent, IonHeader, IonTitle, IonToolbar,
     IonAccordionGroup, IonAccordion, IonItem,
     IonLabel, IonThumbnail, IonSpinner, IonList,
-    CommonModule, FormsModule
+    CommonModule, FormsModule,
+    IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent
   ]
 })
 export class TabEpisodesPage implements OnInit {
@@ -32,27 +35,54 @@ export class TabEpisodesPage implements OnInit {
   loading: boolean = true;
   error: any = null;
 
+  episodesJSON: any[] = JSON_EPISODES.episodes;
+  url_next: string = '';
+
   constructor(private rickandmortyService: RickandmortyService) { }
 
   ngOnInit() {
     this.loadEpisodes();
   }
 
-  loadEpisodes() {
-    this.loading = true;
-    this.error = null;
-    
-    this.rickandmortyService.getEpisodesWithImages().subscribe({
-      next: (data: any[]) => {
-        this.episodes = data;
-        this.loading = false;
-        console.log(this.episodes);
-      },
-      error: (err: any) => {
-        this.error = err;
-        this.loading = false;
-        console.error('Error loading episodes:', err);
+  async loadEpisodes() {
+    try {
+      const resp: any = await this.rickandmortyService.getAllEpisodes().toPromise();
+      this.episodes = resp.results.slice(0, 10); // Tomamos solo los primeros 10
+
+      // Asignar la imagen desde el JSON local
+      this.episodes.forEach((episode, index) => {
+        if (this.episodesJSON[index]) {
+          episode.image = this.episodesJSON[index].image_url;
+        }
+      });
+
+      // Obtener los personajes de cada episodio
+      await this.loadAllEpisodesCharacters();
+
+      console.log("EPISODIOS: ", this.episodes);
+      this.url_next = resp.info.next;
+    } catch (error) {
+      console.error("Error cargando episodios", error);
+    }
+  }
+
+  async loadAllEpisodesCharacters() {
+    for (let episode of this.episodes) {
+      const characterUrls = episode.characters.slice(0, 5); // Limitar a 5 personajes por episodio (para optimizar)
+      
+      const characterRequests = characterUrls.map((url: string) => 
+        this.rickandmortyService.getCharacterByNumber(url.split('/').pop()).toPromise()
+      );
+
+      try {
+        const characters = await Promise.all(characterRequests);
+        episode.characters = characters.map(char => ({
+          name: char.name,
+          image: char.image
+        }));
+      } catch (error) {
+        console.error("Error cargando personajes", error);
       }
-    });
+    }
   }
 }
