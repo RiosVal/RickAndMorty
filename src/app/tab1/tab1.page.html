@@ -1,17 +1,17 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Rick and Morty
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <swiper-container loop="true">
+    <ng-container *ngFor="let wallpaper of wallpapers">
+      <swiper-slide>
+        <img [src]="wallpaper" class="wallpaper-image" alt="Rick and Morty Wallpaper" />
+      </swiper-slide>
+    </ng-container>
+  </swiper-container>
 </ion-content>
