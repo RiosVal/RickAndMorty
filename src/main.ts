@@ -12,14 +12,22 @@ import {
   heart,
   heartOutline,
   arrowBackOutline,
-  trashOutline
+  trashOutline,
+  albumsSharp,
+  personCircleOutline,
+  star,
+  tvSharp
 } from 'ionicons/icons';
 
 addIcons({
   'heart-outline': heartOutline,
   'heart': heart,
   'arrow-back-outline': arrowBackOutline,
-  'trash-outline': trashOutline
+  'trash-outline': trashOutline,
+  'albums-sharp': albumsSharp,
+  'person-circle-outline': personCircleOutline,
+  'star': star,
+  'tv-sharp': tvSharp
 });
 
 registerSwiperElements();
