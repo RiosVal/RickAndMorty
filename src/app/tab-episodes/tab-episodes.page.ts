@@ -10,7 +10,6 @@ import {
   IonItem,
   IonLabel,
   IonThumbnail,
-  IonSpinner,
   IonAccordionGroup,
   IonAccordion,
   IonAvatar} from '@ionic/angular/standalone';
@@ -25,7 +24,7 @@ import { JSON_EPISODES } from 'src/assets/imageEpisodes';
   imports: [
     IonContent, IonHeader, IonTitle, IonToolbar,
     IonAccordionGroup, IonAccordion, IonItem,
-    IonLabel, IonThumbnail, IonSpinner, IonList,
+    IonLabel, IonThumbnail, IonList,
     CommonModule, FormsModule, IonAvatar,
   ]
 })

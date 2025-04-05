@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { FavoritesComponent } from '../components/favorites/favorites.component';
 
 @Component({
@@ -12,7 +11,6 @@ import { FavoritesComponent } from '../components/favorites/favorites.component'
     IonToolbar,
     IonTitle,
     IonContent,
-    ExploreContainerComponent,
     FavoritesComponent
   ],
 })

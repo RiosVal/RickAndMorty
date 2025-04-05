@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { CharactersListComponent } from '../components/characters-list/characters-list.component';
 
 @Component({
@@ -12,7 +11,6 @@ import { CharactersListComponent } from '../components/characters-list/character
     IonToolbar,
     IonTitle,
     IonContent,
-    ExploreContainerComponent,
     CharactersListComponent
   ]
 })
